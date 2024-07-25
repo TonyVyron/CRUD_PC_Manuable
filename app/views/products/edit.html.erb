@@ -1,0 +1,68 @@
+<div class="container">
+  <%= form_with(model: @product, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <h1>Update  <%= @product.name %></h1>
+    <% if @product.errors.any? %>
+      <div class="alert alert-danger">
+        <h4 class="alert-heading"><%= pluralize(@product.errors.count, "error") %></h4>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= form.label :name, class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :price, class: 'form-label' %>
+      <%= form.number_field :price, step: '0.01', min: '0', placeholder: '0.00', class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :sku, class: 'form-label' %>
+      <%= form.text_field :sku, class: 'form-control' %>
+    </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :image, class: 'form-label' %>
+      <div class="d-flex align-items-center">
+        <% if form.object.image.attached? %>
+          <div class="me-3">
+            <%= image_tag url_for(form.object.image), alt: form.object.image.filename.to_s, class: 'img-thumbnail', style: 'max-width: 120px; max-height: 120px;' %>
+          </div>
+          <div class="d-flex flex-column">
+            <div class="mb-2">
+              <%= form.check_box :remove_image, class: 'form-check-input' %>
+              <%= form.label :remove_image, 'Remove current image', class: 'form-check-label' %>
+            </div>
+            <%= form.file_field :image, class: 'form-control' %>
+          </div>
+        <% else %>
+          <div class="d-flex flex-column w-100">
+            <p class="mb-2">No image uploaded</p>
+            <%= form.file_field :image, class: 'form-control' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :quantity, class: 'form-label' %>
+      <%= form.number_field :quantity, class: 'form-control' %>
+    </div>
+      <div class=" col-md-6 d-flex flex-column justify-content-center align-items-center">
+      <%= form.label :is_seasonal, class: 'form-check-label' %>
+      <%= form.check_box :is_seasonal, class: 'form-check-input' %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :category_id, class: 'form-label' %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Selecciona una categoría' }, class: 'form-select' %>
+    </div>
+  </div>
+  <br>
+  <div class="mb-3">
+    <%= form.submit 'Update Product', class: 'btn btn-primary' %>
+    <%= link_to 'Back to Products', products_path, class: 'btn btn-secondary' %>
+  </div>
+  <% end %>
+</div>
