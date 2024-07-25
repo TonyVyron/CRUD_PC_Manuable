@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path, notice: 'Product was successfully created.'
     else
+      flash.now[:alert] = 'Failed to create product. Please check the errors and try again.'
       render :new
     end
   end
@@ -33,6 +34,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to @product, notice: 'Product was successfully updated.'
     else
+      flash.now[:alert] = 'Failed to update Product. Please check the errors and try again.'
       render :edit
     end
   end
