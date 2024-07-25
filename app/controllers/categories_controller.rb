@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to categories_path, notice: 'Category was successfully created'
     else
-      flash.now[:alert] = 'Failed to create Category. Please check the errors and try again.'
+      flash.now[:alert] = 'Failed to create Category. Please check the errors and try again'
       render :new
     end
   end
@@ -28,9 +28,9 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
-      redirect_to @category
+      redirect_to @category , notice: 'Category was successfully updated'
     else
-      flash.now[:alert] = 'Failed to update Category. Please check the errors and try again.'
+      flash.now[:alert] = 'Failed to update Category. Please check the errors and try again'
       render :edit
     end
   end

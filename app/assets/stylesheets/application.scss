@@ -1,10 +1,12 @@
 @import 'bootstrap';
 @import 'toastr/toastr'; 
+
 body{
   padding: 20px;
   padding-top: 40px;
   background-color: rgba(245, 222, 179, 0.055);
 }
+
 .clickable-row {
 cursor: pointer;
 }
@@ -12,7 +14,7 @@ cursor: pointer;
 table{
   border-radius: 10px;
   border: 1px solid wheat;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); 
+  box-shadow:  0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 .table-container {
