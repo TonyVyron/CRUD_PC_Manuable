@@ -47,7 +47,7 @@ Asegúrate de tener instalados los siguientes componentes en tu máquina:
 3. **Configura la base de datos:**
    ```bash
    rails db:create
-   ails db:migrate
+   rails db:migrate
 
 4. **Inicia el servidor:**
    ```bash
