@@ -32,13 +32,17 @@
       <%= form.label :quantity, class: 'form-label' %>
       <%= form.number_field :quantity, class: 'form-control' %>
     </div>
-    <div class=" col-md-6 d-flex flex-column justify-content-center align-items-center">
-      <%= form.label :is_seasonal, class: 'form-check-label' %>
-      <%= form.check_box :is_seasonal, class: 'form-check-input' %>
+  <div class="col-md-6">
+      <%= form.label :unit, class: 'form-label' %>
+      <%= form.select :unit, options_for_select([['Grams'], ['Kilos'], ['Pieces']], @product.unit), { prompt: 'Select a unit' }, class: 'form-select' %>
     </div>
     <div class="col-md-6">
       <%= form.label :category_id, class: 'form-label' %>
       <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: 'Select a category' }, class: 'form-select' %>
+    </div>
+    <div class=" col-md-6 d-flex flex-column justify-content-center align-items-center">
+      <%= form.label :is_seasonal, class: 'form-check-label' %>
+      <%= form.check_box :is_seasonal, class: 'form-check-input' %>
     </div>
   </div>
   <br>
